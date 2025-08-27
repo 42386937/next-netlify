@@ -1,17 +1,13 @@
 "use client"
 import Image from "next/image";
-import { Tilt } from "react-tilt";
+import Tilt from 'react-parallax-tilt';
 import { motion } from "framer-motion";
 import { styles } from "../app/styles";
 import { services } from "../constants";
 import { SectionWrapper } from "../hoc";
 import { fadeIn, textVariant } from "../app/utils/motion";
  const ServiceCard = ({ index, title, icon }) => (
-    <Tilt className='xs:w-[250px] flex-1' options={{
-      max: 45,
-      scale: 1,
-      speed: 450,
-    }}>
+    <Tilt className='xs:w-[250px] flex-1'>
       <motion.div
         variants={fadeIn("right", "spring", index * 0.5, 0.75)}
         className='w-full green-pink-gradient p-[1px] rounded-[20px] shadow-card'

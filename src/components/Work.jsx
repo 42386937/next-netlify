@@ -1,6 +1,6 @@
 "use client"
 import Image from "next/image";
-import { Tilt } from "react-tilt";
+import Tilt from 'react-parallax-tilt';
 import { motion } from "framer-motion";
 import { styles } from "../app/styles";
 import { projects } from "../constants";
