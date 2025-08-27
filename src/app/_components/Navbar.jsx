@@ -1,6 +1,6 @@
 "use client"
 import { useEffect, useState } from "react";
-import Link from "next/link";
+// import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { styles } from "../styles";
 import Image from "next/image";
@@ -15,26 +15,39 @@ import {
     SheetTitle,
     SheetTrigger,
 } from "@/components/ui/sheet"
+import {
+  Link,
+  DirectLink,
+  Element,
+  Events,
+  animateScroll,
+  scrollSpy,
+  scroller
+} from "react-scroll";
 const navLinks = [
     {
         id: "chinese",
         title: "Chinese",
-        path: '/'
+        path: '/',
+        name: "chinese"
     },
     {
         id: "about",
         title: "About",
-        path: '#about'
+        path: '#about',
+        name: "About"
     },
     {
         id: "work",
         title: "Work",
-        path: '#work'
+        path: '#work',
+        name: "Work"
     },
     {
         id: "contact",
         title: "Contact",
-        path: '/'
+        path: '/',
+        name: "Contact"
     },
 ]
 export default function Navbar() {
@@ -75,13 +88,21 @@ export default function Navbar() {
                     {
                         navLinks.map((item, index) => {
                             return (
-                                <Link href={item.path} className={`font-bold cursor-pointer text-[16px] ${active === item.title ? "text-white" : "text-slate-400"
-                                    }`} key={index} onClick={() => {
-                                        setToggle(!toggle);
-                                        setActive(item.title);
-                                    }}>
-                                    {item.title}
-                                </Link>
+                                // <Link href={item.path} scroll={true} className={`font-bold cursor-pointer text-[16px] ${active === item.title ? "text-white" : "text-slate-400"
+                                //     }`} key={index} onClick={() => {
+                                //         setToggle(!toggle);
+                                //         setActive(item.title);
+                                //     }}>
+                                //     {item.title}
+                                // </Link>
+                                 <Link   to={item.name} spy={true} smooth={true} duration={500} offset={50} key={index} className="font-bold cursor-pointer text-[16px] text-white">{item.title}</Link>
+                                // <Link href={item.path} scroll={true} className={`font-bold cursor-pointer text-[16px] ${active === item.title ? "text-white" : "text-slate-400"
+                                //     }`} key={index} onClick={() => {
+                                //         setToggle(!toggle);
+                                //         setActive(item.title);
+                                //     }}>
+                                //     {item.title}
+                                // </Link>
                             )
                         })
                     }

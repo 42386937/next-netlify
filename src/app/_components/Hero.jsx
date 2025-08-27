@@ -1,6 +1,5 @@
 "use client"
 import { motion } from "framer-motion";
-import Image from "next/image";
 import { styles } from "../styles";
 import ComputersCanvas from "./Computers";
 export default function Home() {
@@ -23,7 +22,7 @@ export default function Home() {
       </div>
       <ComputersCanvas />
       <div className="absolute w-full bottom-[20px] flex justify-center items-center z-12">
-        <div className="w-[30px] h-[60px] border-4 border-[#aaa6c3] rounded-full flex justify-center">
+        <div className="w-[30px] h-[60px] border-4 border-[#aaa6c3] rounded-full flex justify-center cursor-pointer">
           <motion.div
             animate={{
               y: [0, 24, 0],

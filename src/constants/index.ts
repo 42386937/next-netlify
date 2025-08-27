@@ -29,14 +29,17 @@ export const navLinks = [
   {
     id: "about",
     title: "About",
+    name:'About'
   },
   {
     id: "work",
     title: "Work",
+    name:'Work'
   },
   {
     id: "contact",
     title: "Contact",
+    name:'Contact'
   },
 ];
 

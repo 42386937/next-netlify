@@ -1,3 +1,13 @@
+"use client"
+import {
+  Link,
+  DirectLink,
+  Element,
+  Events,
+  animateScroll,
+  scrollSpy,
+  scroller
+} from "react-scroll";
 import Navbar from "./_components/Navbar";
 import Hero from "./_components/Hero";
 import About from "../components/About";
@@ -7,6 +17,7 @@ import Work from "../components/Work";
 import Feedbacks from "../components/Feedbacks";
 import Contact from "../components/Contact";
 import StarsCanvas from "../components/StarsCanvas";
+
 export default function Home() {
   return (
     <div className="relative z-0">
@@ -14,7 +25,11 @@ export default function Home() {
         <Navbar />
         <Hero />
       </div>
-      <About />
+      {/* <About /> */}
+      <Element id="About"  >
+        <About />
+      </Element>
+
       <Experience />
       <Tech />
       <Work />
