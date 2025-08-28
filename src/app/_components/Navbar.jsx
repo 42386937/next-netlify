@@ -4,7 +4,9 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { styles } from "../styles";
 import Image from "next/image";
-import { logo, menu } from "../../assets";
+import { menu } from "../../assets";
+// import logo from "../../../public/images/logo.png";
+// const logo = require("../../assets/logo.png");
 import {
     Sheet,
     SheetClose,
@@ -16,13 +18,7 @@ import {
     SheetTrigger,
 } from "@/components/ui/sheet"
 import {
-  Link,
-  DirectLink,
-  Element,
-  Events,
-  animateScroll,
-  scrollSpy,
-  scroller
+    Link,
 } from "react-scroll";
 const navLinks = [
     {
@@ -77,32 +73,21 @@ export default function Navbar() {
                     setActive("");
                     window.scrollTo(0, 0);
                 }}>
-                    <Image src={logo} alt="logo" className="w-10 h-10 object-contain" />
-                    <p className="text-white font-bold text-[18px] cursor-pointer flex items-center">
-                        <span>Adrian &nbsp;</span>
+                    <Image src="/images/logo.png" alt="logo" width={40} height={40}  className="rounded-full"/>
+                    <Link className="text-white font-bold text-[18px] cursor-pointer flex items-center" to="Hero" spy={true} smooth={true} duration={1000}>
+                        <span>YanLiu &nbsp;</span>
                         <span className="sm:block hidden"> | JavaScript Mastery</span>
-                    </p>
+                    </Link>
 
                 </div>
                 <div className="hidden sm:flex items-center gap-3">
                     {
                         navLinks.map((item, index) => {
                             return (
-                                // <Link href={item.path} scroll={true} className={`font-bold cursor-pointer text-[16px] ${active === item.title ? "text-white" : "text-slate-400"
-                                //     }`} key={index} onClick={() => {
-                                //         setToggle(!toggle);
-                                //         setActive(item.title);
-                                //     }}>
-                                //     {item.title}
-                                // </Link>
-                                 <Link   to={item.name} spy={true} smooth={true} duration={500} offset={50} key={index} className="font-bold cursor-pointer text-[16px] text-white">{item.title}</Link>
-                                // <Link href={item.path} scroll={true} className={`font-bold cursor-pointer text-[16px] ${active === item.title ? "text-white" : "text-slate-400"
-                                //     }`} key={index} onClick={() => {
-                                //         setToggle(!toggle);
-                                //         setActive(item.title);
-                                //     }}>
-                                //     {item.title}
-                                // </Link>
+                                <Link onClick={() => {
+                                    setToggle(!toggle);
+                                    setActive(item.title);
+                                }} to={item.name} spy={true} smooth={true} duration={1000} offset={50} key={index} className={`font-bold cursor-pointer text-[16px] ${active === item.title ? "text-white" : "text-slate-400"}`}>{item.title}</Link>
                             )
                         })
                     }
@@ -121,17 +106,17 @@ export default function Navbar() {
                             <SheetHeader>
                                 <SheetTitle className="text-[18px] font-bold text-white">Navigation menu</SheetTitle>
                             </SheetHeader>
-                            <div className="mt-10 p-8 w-full h-full">
+                            <div className="mt-10 p-8 w-full h-full flex flex-col">
                                 {
                                     navLinks.map((item, index) => {
                                         return (
-                                            <div className={`mt-2 w-full text-center text-[16px] ${active === item.title ? "font-bold" : ""
+                                            <Link to={item.name} spy={true} smooth={true} duration={1000} offset={50} className={`mt-2 w-full text-center text-[16px] ${active === item.title ? "font-bold" : ""
                                                 }`} key={index} onClick={() => {
                                                     setToggle(!toggle);
                                                     setActive(item.title);
                                                 }}>
                                                 {item.title}
-                                            </div>
+                                            </Link>
                                         )
                                     })
                                 }
