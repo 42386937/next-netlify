@@ -1,18 +1,16 @@
 "use client"
-import { useEffect, useState } from "react";
-// import Link from "next/link";
+import { useEffect, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { styles } from "../styles";
 import Image from "next/image";
 import { menu } from "../../assets";
-// import logo from "../../../public/images/logo.png";
-// const logo = require("../../assets/logo.png");
+import { setUserLocale } from '@/i18n/service'
+import { defaultLocale } from '@/i18n/config';
+import { getLocale, getMessages } from 'next-intl/server';
+import { useTranslations } from 'next-intl';
 import {
     Sheet,
-    SheetClose,
     SheetContent,
-    SheetDescription,
-    SheetFooter,
     SheetHeader,
     SheetTitle,
     SheetTrigger,
@@ -21,12 +19,6 @@ import {
     Link,
 } from "react-scroll";
 const navLinks = [
-    {
-        id: "chinese",
-        title: "Chinese",
-        path: '/',
-        name: "chinese"
-    },
     {
         id: "about",
         title: "About",
@@ -46,11 +38,40 @@ const navLinks = [
         name: "Contact"
     },
 ]
-export default function Navbar() {
+const navEnglish = () => {
+    return (
+        <>
+            {
+                navLinks.map((item, index) => {
+                    return (
+                        <Link onClick={() => {
+                            setToggle(!toggle);
+                            setActive(item.title);
+                        }} to={item.name} spy={true} smooth={true} duration={1000} offset={50} key={index} className={`font-bold cursor-pointer text-[16px] ${active === item.title ? "text-white" : "text-slate-400"}`}>{item.title}</Link>
+                    )
+                })
+            }
+        </>
+    )
+}
+const navChinese = () => {
+    return(
+        <div>aaa</div>
+    )
+}
+
+function Navbar() {
     const [active, setActive] = useState("");
     const [toggle, setToggle] = useState(false);
     const [scrolled, setScrolled] = useState(false);
+    const [language, setLanguage] = useState("");
+    const t = useTranslations('HomePage');
     useEffect(() => {
+        if (defaultLocale === "en") {
+            setLanguage("English");
+        } else {
+            setLanguage("中文");
+        }
         const handleScroll = () => {
             const scrollTop = window.scrollY;
             if (scrollTop > 100) {
@@ -59,11 +80,19 @@ export default function Navbar() {
                 setScrolled(false);
             }
         };
-
         window.addEventListener("scroll", handleScroll);
-
         return () => window.removeEventListener("scroll", handleScroll);
+
     }, []);
+    const languageChange = () => {
+        if (language === "English") {
+            setLanguage("中文");
+            setUserLocale("zh");
+        } else {
+            setLanguage("English");
+            setUserLocale("en");
+        }
+    }
     return (
         <div className={`${styles.paddingX
             } w-full flex items-center py-5 fixed top-0 z-20 ${scrolled ? "bg-[#050816]" : "bg-transparent"
@@ -73,24 +102,16 @@ export default function Navbar() {
                     setActive("");
                     window.scrollTo(0, 0);
                 }}>
-                    <Image src="/images/logo.png" alt="logo" width={40} height={40}  className="rounded-full"/>
+                    <Image src="/images/logo.png" alt="logo" width={40} height={40} className="rounded-full" />
                     <Link className="text-white font-bold text-[18px] cursor-pointer flex items-center" to="Hero" spy={true} smooth={true} duration={1000}>
-                        <span>YanLiu &nbsp;</span>
+                        <span>{t('YanLiu')} &nbsp;</span>
                         <span className="sm:block hidden"> | JavaScript Mastery</span>
                     </Link>
 
                 </div>
                 <div className="hidden sm:flex items-center gap-3">
-                    {
-                        navLinks.map((item, index) => {
-                            return (
-                                <Link onClick={() => {
-                                    setToggle(!toggle);
-                                    setActive(item.title);
-                                }} to={item.name} spy={true} smooth={true} duration={1000} offset={50} key={index} className={`font-bold cursor-pointer text-[16px] ${active === item.title ? "text-white" : "text-slate-400"}`}>{item.title}</Link>
-                            )
-                        })
-                    }
+                    <div onClick={languageChange} className={`font-bold cursor-pointer text-[16px] text-slate-400`}>{language}</div>
+                    <navChinese/>
                 </div>
                 <div className='sm:hidden flex flex-1 justify-end items-center'>
                     <Sheet>
@@ -128,4 +149,5 @@ export default function Navbar() {
         </div>
     )
 }
+export default Navbar;
 

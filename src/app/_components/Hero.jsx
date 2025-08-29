@@ -2,7 +2,9 @@
 import { motion } from "framer-motion";
 import { styles } from "../styles";
 import ComputersCanvas from "./Computers";
+import {useTranslations} from 'next-intl';
 export default function Home() {
+  const t = useTranslations('HomePage');
   return (
     <section className="w-full h-screen relative mx-auto">
       <div className={`absolute inset-0 z-10 max-w-7xl mx-auto ${styles.paddingX}  top-[100px] flex flex-row items-start gap-4 h-auto`}>
@@ -12,7 +14,7 @@ export default function Home() {
         </div>
         <div>
           <h1 className={`${styles.heroHeadText} text-white`}>
-            Hi, I'm <span className='text-[#915EFF]'>YanLiu</span>
+            Hi, I'm <span className='text-[#915EFF]'>{t('YanLiu')}</span>
           </h1>
           <p className={`${styles.heroSubText} mt-2 text-white-100`}>
             I develop 3D visuals, user <br className='sm:block hidden' />
