@@ -4,10 +4,8 @@ import { useRouter } from "next/navigation";
 import { styles } from "../styles";
 import Image from "next/image";
 import { menu } from "../../assets";
-import { setUserLocale } from '@/i18n/service'
-import { defaultLocale } from '@/i18n/config';
-import { getLocale, getMessages } from 'next-intl/server';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
+import { navEn, navZh } from "../../constants";
 import {
     Sheet,
     SheetContent,
@@ -17,60 +15,52 @@ import {
 } from "@/components/ui/sheet"
 import {
     Link,
+    scroller,
 } from "react-scroll";
-const navLinks = [
-    {
-        id: "about",
-        title: "About",
-        path: '#about',
-        name: "About"
-    },
-    {
-        id: "work",
-        title: "Work",
-        path: '#work',
-        name: "Work"
-    },
-    {
-        id: "contact",
-        title: "Contact",
-        path: '/',
-        name: "Contact"
-    },
-]
-const navEnglish = () => {
-    return (
-        <>
-            {
-                navLinks.map((item, index) => {
-                    return (
-                        <Link onClick={() => {
-                            setToggle(!toggle);
-                            setActive(item.title);
-                        }} to={item.name} spy={true} smooth={true} duration={1000} offset={50} key={index} className={`font-bold cursor-pointer text-[16px] ${active === item.title ? "text-white" : "text-slate-400"}`}>{item.title}</Link>
-                    )
-                })
-            }
-        </>
-    )
-}
-const navChinese = () => {
-    return(
-        <div>aaa</div>
-    )
-}
-
-function Navbar() {
+export default function Navbar() {
     const [active, setActive] = useState("");
     const [toggle, setToggle] = useState(false);
     const [scrolled, setScrolled] = useState(false);
     const [language, setLanguage] = useState("");
+    const locale = useLocale();
     const t = useTranslations('HomePage');
+    const navEnglish = (active) => {
+        return (
+            <>
+                {
+                    navEn.map((item, index) => {
+                        return (
+                            <Link onClick={() => {
+                                setToggle(!toggle);
+                                setActive(item.title);
+                            }} to={item.name} spy={true} smooth={true} duration={1000} offset={10} key={index} className={`font-bold cursor-pointer text-[16px] ${active === item.title ? "text-white" : "text-slate-400"}`}>{item.title}</Link>
+                        )
+                    })
+                }
+            </>
+        )
+    }
+    const navChinese = (active) => {
+        return (
+            <>
+                {
+                    navZh.map((item, index) => {
+                        return (
+                            <Link onClick={() => {
+                                setToggle(!toggle);
+                                setActive(item.title);
+                            }} to={item.name} spy={true} smooth={true} duration={1000} offset={10} key={index} className={`font-bold cursor-pointer text-[16px] ${active === item.title ? "text-white" : "text-slate-400"}`}>{item.title}</Link>
+                        )
+                    })
+                }
+            </>
+        )
+    }
     useEffect(() => {
-        if (defaultLocale === "en") {
-            setLanguage("English");
+        if (locale === "en") {
+            setLanguage("Chinese");
         } else {
-            setLanguage("中文");
+            setLanguage("英文");
         }
         const handleScroll = () => {
             const scrollTop = window.scrollY;
@@ -84,14 +74,28 @@ function Navbar() {
         return () => window.removeEventListener("scroll", handleScroll);
 
     }, []);
-    const languageChange = () => {
-        if (language === "English") {
-            setLanguage("中文");
-            setUserLocale("zh");
-        } else {
-            setLanguage("English");
-            setUserLocale("en");
+    const switchLocale = async (newLocale) => {
+        // 1. 调用 API 路由来设置 Cookie
+        const response = await fetch('/api/locale', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ locale: newLocale }),
+        });
+        if (response.status == 200) {
+            window.location.reload();
         }
+    };
+    const languageChange = async () => {
+        if (language === "Chinese") {
+            setLanguage("英文");
+            switchLocale("zh");
+        } else {
+            setLanguage("Chinese");
+            switchLocale("en");
+        }
+
     }
     return (
         <div className={`${styles.paddingX
@@ -105,13 +109,13 @@ function Navbar() {
                     <Image src="/images/logo.png" alt="logo" width={40} height={40} className="rounded-full" />
                     <Link className="text-white font-bold text-[18px] cursor-pointer flex items-center" to="Hero" spy={true} smooth={true} duration={1000}>
                         <span>{t('YanLiu')} &nbsp;</span>
-                        <span className="sm:block hidden"> | JavaScript Mastery</span>
+                        <span className="sm:block hidden"> | {t('Mastery')}</span>
                     </Link>
 
                 </div>
                 <div className="hidden sm:flex items-center gap-3">
                     <div onClick={languageChange} className={`font-bold cursor-pointer text-[16px] text-slate-400`}>{language}</div>
-                    <navChinese/>
+                    {language === "Chinese" ? navEnglish(active) : navChinese(active)}
                 </div>
                 <div className='sm:hidden flex flex-1 justify-end items-center'>
                     <Sheet>
@@ -129,7 +133,7 @@ function Navbar() {
                             </SheetHeader>
                             <div className="mt-10 p-8 w-full h-full flex flex-col">
                                 {
-                                    navLinks.map((item, index) => {
+                                    navEn.map((item, index) => {
                                         return (
                                             <Link to={item.name} spy={true} smooth={true} duration={1000} offset={50} className={`mt-2 w-full text-center text-[16px] ${active === item.title ? "font-bold" : ""
                                                 }`} key={index} onClick={() => {
@@ -149,5 +153,4 @@ function Navbar() {
         </div>
     )
 }
-export default Navbar;
 

@@ -1,12 +1,17 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import { NextIntlClientProvider } from 'next-intl';
-import { getLocale, getMessages } from 'next-intl/server';
+import { getMessages } from 'next-intl/server';
+import { cookies } from 'next/headers';
 import "./globals.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
 });
+export function generateStaticParams() {
+  return [{ locale: 'en' }, { locale: 'zh' }];
+}
+
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
@@ -19,7 +24,8 @@ export const metadata = {
 };
 
 export default async function RootLayout({ children }) {
-  const locale = await getLocale()
+  const cookieStore = await cookies();
+  const locale = cookieStore.get('NEXT_LOCALE').value;
   const messages = await getMessages()
   return (
     <html lang={locale}>

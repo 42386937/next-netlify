@@ -20,12 +20,10 @@ export default function Home() {
         <Element id="Hero"  >
           <Hero />
         </Element>
-        
       </div>
-      <Element id="About"  >
+      <Element id="About"  name="About">
         <About />
       </Element>
-
       <Experience />
       <Tech />
       <Element id="Work"  >

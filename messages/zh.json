@@ -1,5 +1,20 @@
 {
   "HomePage": {
-    "YanLiu": "刘岩"
+    "YanLiu": "刘岩",
+    "Mastery": "精通JavaScript",
+    "hi": "你好,我是",
+    "develop": "我会开发3D视觉效果,",
+    "interfaces": "用户界面和web应用程序",
+    "Introduction": "介绍",
+    "strengths": "个人优势",
+    "desc1": "我是一名经验丰富的全栈开发人员,精通 TypeScript 和 JavaScript,并掌握 React、Vue、Next.js 和 Three.js 等框架,熟练操作多种前端 UI 框架,包括 Vant-UI、Element-UI、iView、Shadcn-Ui 和 Ant.Design。",
+    "desc2": "在移动端开发方面,熟练使用 uniapp、Taro 和 React Native 等跨平台开发框架。后端语言能力扎实,能够使用 Node.js 和 Express 进行接口搭建及服务器部署。调用过腾讯云和阿里云提供的对象存储 COS、人脸识别、直播和云点播等云产品。",
+    "desc3": "尤其在微信小程序、App、H5 和后台管理系统开发领域拥有多年工作经验。我学习能力强,能与客户紧密合作,打造高效、可扩展且用户友好的解决方案,解决现实世界中的问题。让我们携手合作,将您的想法变为现实！",
+    "what": "到目前为止我做了什么",
+    "workExperience":"工作经验",
+    "MyProjects": "我的项目",
+    "MySkills": "我的技能",
+    "MyExperience": "我的经验",
+    "MyEducation": "我的教育"
   }
 }

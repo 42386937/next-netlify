@@ -10,6 +10,7 @@ import { styles } from "../app/styles";
 import { experiences } from "../constants";
 import { SectionWrapper } from "../hoc";
 import { textVariant } from "../utils/motion";
+import { useTranslations, useLocale } from 'next-intl';
 const ExperienceCard = ({ experience }) => {
   return (
     <VerticalTimelineElement
@@ -25,7 +26,7 @@ const ExperienceCard = ({ experience }) => {
           <Image
             src={experience.icon}
             alt={experience.company_name}
-            className='w-[60%] h-[60%] object-contain'
+            className='w-[90%] h-[90%] object-contain'
           />
         </div>
       }
@@ -54,15 +55,13 @@ const ExperienceCard = ({ experience }) => {
   );
 };
 function Experience() {
+  const t = useTranslations('HomePage');
+  const locale = useLocale();
   return (
     <>
       <motion.div variants={textVariant()}>
-        <p className={`${styles.sectionSubText} text-center`}>
-          What I have done so far
-        </p>
-        <h2 className={`${styles.sectionHeadText} text-center`}>
-          Work Experience.
-        </h2>
+        <p className={`${styles.sectionSubText} text-center`}>{t('what')}</p>
+        <h2 className={`${styles.sectionHeadText} text-center`}>{t('workExperience')}</h2>
       </motion.div>
       <div className='mt-20 flex flex-col'>
         <VerticalTimeline>
