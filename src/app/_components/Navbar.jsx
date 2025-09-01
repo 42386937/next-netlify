@@ -15,7 +15,6 @@ import {
 } from "@/components/ui/sheet"
 import {
     Link,
-    scroller,
 } from "react-scroll";
 export default function Navbar() {
     const [active, setActive] = useState("");
@@ -95,7 +94,6 @@ export default function Navbar() {
             setLanguage("Chinese");
             switchLocale("en");
         }
-
     }
     return (
         <div className={`${styles.paddingX
@@ -129,22 +127,13 @@ export default function Navbar() {
                         </SheetTrigger>
                         <SheetContent className="w-[250px] sm:w-[340px] bg-[#090325] text-white">
                             <SheetHeader>
-                                <SheetTitle className="text-[18px] font-bold text-white">Navigation menu</SheetTitle>
+                                <SheetTitle className="text-[18px] font-bold text-white">{t('NavigationMenu')}</SheetTitle>
                             </SheetHeader>
                             <div className="mt-10 p-8 w-full h-full flex flex-col">
-                                {
-                                    navEn.map((item, index) => {
-                                        return (
-                                            <Link to={item.name} spy={true} smooth={true} duration={1000} offset={50} className={`mt-2 w-full text-center text-[16px] ${active === item.title ? "font-bold" : ""
-                                                }`} key={index} onClick={() => {
-                                                    setToggle(!toggle);
-                                                    setActive(item.title);
-                                                }}>
-                                                {item.title}
-                                            </Link>
-                                        )
-                                    })
-                                }
+                                <div onClick={languageChange} className={`font-bold cursor-pointer text-[16px] text-slate-400 text-center`}>{language}</div>
+                                <div className="text-center flex flex-col">
+                                    {language === "Chinese" ? navEnglish(active) : navChinese(active)}
+                                </div>
                             </div>
                         </SheetContent>
                     </Sheet>

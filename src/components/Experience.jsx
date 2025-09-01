@@ -7,7 +7,7 @@ import {
 import 'react-vertical-timeline-component/style.min.css';
 import { motion } from "framer-motion";
 import { styles } from "../app/styles";
-import { experiences } from "../constants";
+import { experiencesEn, experiencesZh } from "../constants";
 import { SectionWrapper } from "../hoc";
 import { textVariant } from "../utils/motion";
 import { useTranslations, useLocale } from 'next-intl';
@@ -54,6 +54,30 @@ const ExperienceCard = ({ experience }) => {
     </VerticalTimelineElement>
   );
 };
+const ItemZh = ({ experience }) => {
+  return (
+    <VerticalTimeline>
+      {experiencesZh.map((experience, index) => (
+        <ExperienceCard
+          key={`experience-${index}`}
+          experience={experience}
+        />
+      ))}
+    </VerticalTimeline>
+  )
+}
+const ItemEn = ({ experience }) => {
+  return (
+    <VerticalTimeline>
+      {experiencesEn.map((experience, index) => (
+        <ExperienceCard
+          key={`experience-${index}`}
+          experience={experience}
+        />
+      ))}
+    </VerticalTimeline>
+  )
+}
 function Experience() {
   const t = useTranslations('HomePage');
   const locale = useLocale();
@@ -64,14 +88,7 @@ function Experience() {
         <h2 className={`${styles.sectionHeadText} text-center`}>{t('workExperience')}</h2>
       </motion.div>
       <div className='mt-20 flex flex-col'>
-        <VerticalTimeline>
-          {experiences.map((experience, index) => (
-            <ExperienceCard
-              key={`experience-${index}`}
-              experience={experience}
-            />
-          ))}
-        </VerticalTimeline>
+        {locale === 'zh' ? <ItemZh /> : <ItemEn />}
       </div>
     </>
   )

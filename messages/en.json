@@ -11,6 +11,7 @@
     "desc2": "For mobile development, I have mastered cross-platform frameworks like uniapp, Taro, and React Native, enabling seamless multi-device application delivery. Additionally, I boast a strong foundation in back-end technologies: I can design, build, and maintain APIs, as well as manage and deploy servers, using Node.js and Express. Furthermore, I have leveraged cloud services from Tencent Cloud and Alibaba Cloud—specifically their Object Storage Service (COS), face recognition, live streaming, and Video-on-Demand (VOD) solutions—to enhance application functionality.",
     "desc3": "Notably, I bring years of hands-on experience in developing WeChat Mini Programs, mobile Apps, H5 applications, and backend management systems—domains where I’ve consistently delivered solutions aligned with business goals. I also have a demonstrated ability to learn quickly and collaborate closely with clients, allowing me to deliver efficient, scalable, and user-centric solutions that solve real-world challenges.Let's work together to transform your vision into tangible results!",
     "what": "WHAT I HAVE DONE SO FAR",
-    "workExperience":"Work Experience"
+    "workExperience":"Work Experience",
+    "NavigationMenu": "Navigation menu"
   }
 }

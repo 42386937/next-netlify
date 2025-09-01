@@ -3,7 +3,7 @@ import Image from "next/image";
 import Tilt from 'react-parallax-tilt';
 import { motion } from "framer-motion";
 import { styles } from "../app/styles";
-import { projects } from "../constants";
+import { projectsEn,projectsZh } from "../constants";
 import { SectionWrapper } from "../hoc";
 import { fadeIn, textVariant } from "../app/utils/motion";
 const WebCard = ({
@@ -101,7 +101,7 @@ function Work() {
         </motion.p>
       </div>
       <div className='mt-20 flex flex-wrap gap-7 w-full'>
-        {projects.map((item, index) => (
+        {projectsEn.map((item, index) => (
           item.type === "web" ? <WebCard key={`project-${index}`} {...item} index={index} /> : <AppCard key={`project-${index}`} {...item} index={index} />
         ))}
       </div>
