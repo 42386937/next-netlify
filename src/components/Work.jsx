@@ -3,7 +3,7 @@ import Image from "next/image";
 import Tilt from 'react-parallax-tilt';
 import { motion } from "framer-motion";
 import { styles } from "../app/styles";
-import { projectsEn,projectsZh } from "../constants";
+import { projectsEn, projectsZh } from "../constants";
 import { SectionWrapper } from "../hoc";
 import { fadeIn, textVariant } from "../app/utils/motion";
 const WebCard = ({
@@ -12,6 +12,7 @@ const WebCard = ({
   description,
   tags,
   image,
+  type
 }) => {
   return (
     <motion.div variants={fadeIn("up", "spring", index * 0.5, 0.75)}>
@@ -52,14 +53,15 @@ const AppCard = ({
 }) => {
   return (
     <motion.div variants={fadeIn("up", "spring", index * 0.5, 0.75)}>
-      <Tilt className='bg-[#151030] p-5 rounded-2xl sm:w-[360px] w-full'
+      <Tilt className='bg-[#151030] p-5 rounded-2xl sm:w-[360px] w-full border-2 border-white'
       >
         <div className="w-full flex justify-center">
-          <div className='relative w-[80%] h-[430px] rounded-2xl'>
+          <div className='relative w-[80%] h-[330px] rounded-2xl'>
             <Image
               src={image}
               alt='project_image'
-              className='w-full h-full  rounded-2xl'
+              // fill
+            className='w-full h-full  rounded-2xl'
             />
           </div>
         </div>
@@ -102,7 +104,8 @@ function Work() {
       </div>
       <div className='mt-20 flex flex-wrap gap-7 w-full'>
         {projectsEn.map((item, index) => (
-          item.type === "web" ? <WebCard key={`project-${index}`} {...item} index={index} /> : <AppCard key={`project-${index}`} {...item} index={index} />
+          <WebCard  key={`project-${index}`} index={index} {...item} />
+          // item.type === "web" ? <WebCard key={`project-${index}`} {...item} index={index} /> : <AppCard key={`project-${index}`} {...item} index={index} />
         ))}
       </div>
     </div>

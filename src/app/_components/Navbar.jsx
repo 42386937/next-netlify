@@ -1,5 +1,5 @@
 "use client"
-import { useEffect, useState, useTransition } from "react";
+import { useEffect, useState, } from "react";
 import { useRouter } from "next/navigation";
 import { styles } from "../styles";
 import Image from "next/image";
@@ -12,6 +12,7 @@ import {
     SheetHeader,
     SheetTitle,
     SheetTrigger,
+    SheetDescription,
 } from "@/components/ui/sheet"
 import {
     Link,
@@ -128,6 +129,9 @@ export default function Navbar() {
                         <SheetContent className="w-[250px] sm:w-[340px] bg-[#090325] text-white">
                             <SheetHeader>
                                 <SheetTitle className="text-[18px] font-bold text-white">{t('NavigationMenu')}</SheetTitle>
+                                <SheetDescription>
+                                    Make changes to your profile here. Click save when you're done.
+                                </SheetDescription>
                             </SheetHeader>
                             <div className="mt-10 p-8 w-full h-full flex flex-col">
                                 <div onClick={languageChange} className={`font-bold cursor-pointer text-[16px] text-slate-400 text-center`}>{language}</div>

@@ -49,7 +49,7 @@ export default function ComputersCanvas() {
         };
     }, []);
     return (
-        <div className="w-full h-screen absolute z-10">
+        // <div className="w-full h-screen absolute z-10">
             <Canvas
                 frameloop='demand'
                 shadows
@@ -67,6 +67,6 @@ export default function ComputersCanvas() {
                 </Suspense>
                 <Preload all />
             </Canvas>
-        </div>
+        // </div>
     )
 }
