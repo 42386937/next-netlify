@@ -1,0 +1,30 @@
+{
+  "HomePage": {
+    "LiuYan": "Liu Yan",
+    "Mastery": "JavaScript Mastery",
+    "hi": "Hi, I'm",
+    "develop": "I develop 3D visuals, user",
+    "interfaces": "interfaces and web applications",
+    "Introduction": "Introduction",
+    "strengths": "Personal strengths",
+    "desc1": "I am a seasoned full-stack developer proficient in TypeScript and JavaScript, with expertise in frameworks including React, Vue,Next.js and Three.js. I am also well-versed in working with a range of front-end UI frameworks, such as Vant-UI, Element-UI, iView, Shadcn-Ui, and Ant.Design.",
+    "desc2": "For mobile development, I have mastered cross-platform frameworks like uniapp, Taro, and React Native, enabling seamless multi-device application delivery. Additionally, I boast a strong foundation in back-end technologies: I can design, build, and maintain APIs, as well as manage and deploy servers, using Node.js and Express. Furthermore, I have leveraged cloud services from Tencent Cloud and Alibaba Cloud—specifically their Object Storage Service (COS), face recognition, live streaming, and Video-on-Demand (VOD) solutions—to enhance application functionality.",
+    "desc3": "Notably, I bring years of hands-on experience in developing WeChat Mini Programs, mobile Apps, H5 applications, and backend management systems—domains where I’ve consistently delivered solutions aligned with business goals. I also have a demonstrated ability to learn quickly and collaborate closely with clients, allowing me to deliver efficient, scalable, and user-centric solutions that solve real-world challenges.Let's work together to transform your vision into tangible results!",
+    "what": "WHAT I HAVE DONE SO FAR",
+    "workExperience":"Work Experience",
+    "NavigationMenu": "Navigation menu",
+    "MyWokrks": "My works",
+    "Projects": "Projects.",
+    "projectsIntroduction":"The following are my real work projects, with brief descriptions of their content, demonstrating my ability to solve complex problems, utilize diverse technologies, and manage projects efficiently.",
+    "MyHonour": "My honour",
+    "content": "Content",
+    "process": "I have performed excellently in programming competitions and computer proficiency exams. Notably, I secured the third place in the APP Programming category at the 2nd 'Tangshan Craftsman Vocational Skills Competition' and was awarded the title of 'Tangshan Technical Expert'. Additionally, I have obtained the Network Engineer certification (via the Computer Technology and Software Professional and Technical Qualification [Level] Exam) and hold multiple software copyrights.",
+    "say": "What others say",
+    "Testimonials": "Testimonials",
+    "email": "E-mail",
+    "Contact": "Contact.",
+    "message": "What you want to say?",
+    "name": "What's your good name?",
+    "address": "What's your web address?"
+  }
+}

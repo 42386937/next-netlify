@@ -1,0 +1,30 @@
+{
+  "HomePage": {
+    "LiuYan": "刘岩",
+    "Mastery": "精通JavaScript",
+    "hi": "你好,我是",
+    "develop": "我会开发3D视觉效果,",
+    "interfaces": "用户界面和web应用程序",
+    "Introduction": "介绍",
+    "strengths": "个人优势",
+    "desc1": "我是一名经验丰富的全栈开发人员,精通 TypeScript 和 JavaScript,并掌握 React、Vue、Next.js 和 Three.js 等框架,熟练操作多种前端 UI 框架,包括 Vant-UI、Element-UI、iView、Shadcn-Ui 和 Ant.Design。",
+    "desc2": "在移动端开发方面,熟练使用 uniapp、Taro 和 React Native 等跨平台开发框架。后端语言能力扎实,能够使用 Node.js 和 Express 进行接口搭建及服务器部署。调用过腾讯云和阿里云提供的对象存储 COS、人脸识别、直播和云点播等云产品。",
+    "desc3": "尤其在微信小程序、App、H5 和后台管理系统开发领域拥有多年工作经验。我学习能力强,能与客户紧密合作,打造高效、可扩展且用户友好的解决方案,解决现实世界中的问题。让我们携手合作,将您的想法变为现实！",
+    "what": "到目前为止我做了什么",
+    "workExperience":"工作经验",
+    "NavigationMenu": "导航菜单",
+    "MyWokrks": "我的作品",
+    "Projects": "项目",
+    "projectsIntroduction": "以下为我的真实工作项目，简要介绍内容，体现我解决复杂问题、运用多元技术及高效管理项目的能力。",
+    "MyHonour": "我的荣誉",
+    "content": "内容",
+    "process": "专业能力与荣誉双收：曾在程序设计大赛、计算机等级考试中表现优异，更在第二届 “唐山工匠职业技能大赛” APP 程序设计项目中夺得第三名，获 “唐山技术能手” 称号；此外，已取得网络工程师认证（计算机技术与软件专业技术资格考试），并拥有多项软件著作权。",
+    "say": "他人怎么说",
+    "Testimonials": "客户评价",
+    "email": "电子邮件",
+    "Contact": "联系我.",
+    "name": "您的名字?",
+    "message": "您想说些什么?",
+    "address": "您的电子邮件？"
+  }
+}
