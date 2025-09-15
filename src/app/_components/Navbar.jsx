@@ -86,7 +86,7 @@ export default function Navbar() {
         });
         console.log(response);
         if (response.status == 200) {
-            // window.location.reload();
+            window.location.reload();
         }
     };
     const languageChange = async () => {
