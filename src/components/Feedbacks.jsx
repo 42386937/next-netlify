@@ -16,7 +16,7 @@ const Card = ({
 }) => (
     <motion.div
         variants={fadeIn("", "spring", index * 0.5, 0.75)}
-        className='bg-[#090325] p-10 rounded-3xl w-[320px] flex-1 '
+        className='bg-[#090325] p-10 rounded-3xl w-[320px] '
     >
         <p className='text-white font-black text-[48px]'>"</p>
 
@@ -46,7 +46,7 @@ const Card = ({
 );
 const FeedbackCard = (arr) => {
     return (
-        <div className={` pb-14 ${styles.paddingX} flex flex-wrap gap-7`}>
+        <div className={` pb-14 ${styles.paddingX} flex flex-wrap gap-7  `}>
             {arr.map((testimonial, index) => (
                 <Card key={testimonial.name} index={index} {...testimonial} />
             ))}
