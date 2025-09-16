@@ -68,8 +68,7 @@ const btnZh = (loading) => {
     )
 }
 function Contact() {
-    let key = process.env.API_KEY
-    console.log(key)
+    // let key = process.env.API_KEY
     emailjs.init('dst0ya8B7iW5z_Fpt');
     const formRef = useRef({});
     const [form, setForm] = useState({

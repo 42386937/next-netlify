@@ -8,27 +8,32 @@ import { SectionWrapper } from "../hoc";
 import { fadeIn, textVariant } from "../app/utils/motion";
 import { useTranslations, useLocale } from 'next-intl';
 const ServiceOption = ({ index, title, icon }) => (
-  <Tilt className='xs:w-full flex-1'>
-    <motion.div
-      variants={fadeIn("right", "spring", index * 0.5, 0.75)}
-      className='w-full green-pink-gradient p-[1px] rounded-[20px] shadow-card'
-    >
-      <div
-
-        className='bg-tertiary rounded-[20px] py-5 px-12 min-h-[280px] flex justify-evenly items-center flex-col'
+  <>
+    <Tilt className='w-full sm:w-[46%] md:w-[46%] lg:flex-1 xl:flex-1'>
+      <motion.div
+        variants={fadeIn("right", "spring", index * 0.5, 0.75)}
+        className='w-full green-pink-gradient p-[1px] rounded-[20px] shadow-card'
       >
-        <Image
-          src={icon}
-          alt='web-development'
-          className='w-16 h-16 object-contain'
-        />
+        <div
 
-        <h3 className='text-white text-[20px] font-bold text-center'>
-          {title}
-        </h3>
-      </div>
-    </motion.div>
-  </Tilt>
+          className='bg-tertiary rounded-[20px] py-5 px-12 min-h-[280px] flex justify-evenly items-center flex-col'
+        >
+          <Image
+            src={icon}
+            alt='web-development'
+            className='w-16 h-16 object-contain'
+          />
+
+          <h3 className='text-white text-[20px] font-bold text-center'>
+            {title}
+          </h3>
+        </div>
+      </motion.div>
+    </Tilt>
+  
+  </>
+
+
 );
 const ServiceCard = (arr) => (
   <div className='mt-10 flex flex-wrap gap-10'>

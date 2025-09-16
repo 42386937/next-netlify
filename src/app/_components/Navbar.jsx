@@ -57,6 +57,39 @@ export default function Navbar() {
             </>
         )
     }
+    
+    const navEnglish1 = (active) => {
+        return (
+            <>
+                {
+                    navEn.map((item, index) => {
+                        return (
+                            <Link onClick={() => {
+                                setToggle(!toggle);
+                                setActive(item.title);
+                            }} to={item.name} spy={true} smooth={true} duration={1000} offset={10} key={index} className={`font-bold mb-2 cursor-pointer text-[16px] ${active === item.title ? "text-white" : "text-slate-400"}`}>{item.title}</Link>
+                        )
+                    })
+                }
+            </>
+        )
+    }
+    const navChinese1 = (active) => {
+        return (
+            <>
+                {
+                    navZh.map((item, index) => {
+                        return (
+                            <Link onClick={() => {
+                                setToggle(!toggle);
+                                setActive(item.title);
+                            }} to={item.name} spy={true} smooth={true} duration={1000} offset={10} key={index} className={`font-bold mb-2 cursor-pointer text-[16px] ${active === item.title ? "text-white" : "text-slate-400"}`}>{item.title}</Link>
+                        )
+                    })
+                }
+            </>
+        )
+    }
     useEffect(() => {
         if (locale === "en") {
             setLanguage("Chinese");
@@ -131,14 +164,12 @@ export default function Navbar() {
                         <SheetContent className="w-[250px] sm:w-[340px] bg-[#090325] text-white">
                             <SheetHeader>
                                 <SheetTitle className="text-[18px] font-bold text-white">{t('NavigationMenu')}</SheetTitle>
-                                <SheetDescription>
-                                    Make changes to your profile here. Click save when you're done.
-                                </SheetDescription>
+                                <SheetDescription></SheetDescription>
                             </SheetHeader>
                             <div className="mt-10 p-8 w-full h-full flex flex-col">
-                                <div onClick={languageChange} className={`font-bold cursor-pointer text-[16px] text-slate-400 text-center`}>{language}</div>
+                                <div onClick={languageChange} className={`font-bold mb-2 cursor-pointer text-[16px] text-slate-400 text-center`}>{language}</div>
                                 <div className="text-center flex flex-col">
-                                    {language === "Chinese" ? navEnglish(active) : navChinese(active)}
+                                    {language === "Chinese" ? navEnglish1(active) : navChinese1(active)}
                                 </div>
                             </div>
                         </SheetContent>

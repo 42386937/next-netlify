@@ -14,9 +14,9 @@ const Card = ({
 }) => {
   return (
     <motion.div variants={fadeIn("up", "spring", index * 0.5, 0.75)}>
-      <Tilt className='bg-[#151030] p-5 rounded-2xl sm:w-[360px] w-full'
+      <Tilt className='bg-[#151030] p-5 rounded-2xl w-[360px] '
       >
-        <div className='relative w-full h-[230px]'>
+        <div className='relative w-full h-[230px] '>
           <Image
             src={image}
             alt='project_image'
@@ -25,7 +25,7 @@ const Card = ({
         </div>
 
         <div className='mt-5'>
-          <h3 className='text-white font-bold text-[24px]'>{name}</h3>
+          <h3 className='text-white font-bold text-[24px] w-full text-center'>{name}</h3>
         </div>
       </Tilt>
     </motion.div>
@@ -55,7 +55,7 @@ function Work() {
           className='mt-3 text-secondary text-[17px] max-w-3xl leading-[30px]'
         >{t('process')}</motion.p>
       </div>
-      <div className='mt-20 flex flex-wrap gap-7'>
+      <div className='mt-20 flex flex-wrap gap-7 w-full '>
         {locale == 'zh' ? WebC(honourZh) : WebC(honourEn)}
       </div>
     </div>

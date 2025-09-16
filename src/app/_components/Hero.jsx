@@ -27,7 +27,7 @@ export default function Home() {
         </div>
       </div>
       <ComputersCanvas />
-      <Link className="absolute w-full xs:bottom-10 bottom-32 flex justify-center items-center" to="About" spy={true} smooth={true} duration={1000}>
+      <Link className="absolute w-full xs:bottom-10 bottom-10 flex justify-center items-center" to="About" spy={true} smooth={true} duration={1000}>
         <div className="w-[30px] h-[60px] border-4 border-[#aaa6c3] rounded-full flex justify-center cursor-pointer">
           <motion.div
             animate={{
