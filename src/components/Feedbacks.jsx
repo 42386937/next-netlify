@@ -16,7 +16,7 @@ const Card = ({
 }) => (
     <motion.div
         variants={fadeIn("", "spring", index * 0.5, 0.75)}
-        className='bg-[#090325] p-10 rounded-3xl w-[320px] '
+        className='bg-[#090325] p-10 rounded-3xl w-[320px] border-2 border-[#4ab4f1]'
     >
         <p className='text-white font-black text-[48px]'>"</p>
 
