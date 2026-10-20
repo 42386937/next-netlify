@@ -4,10 +4,7 @@ import { getMessages } from 'next-intl/server';
 import { cookies } from 'next/headers';
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+
 export function generateStaticParams() {
   return [{ locale: 'en' }, { locale: 'zh' }];
 }
