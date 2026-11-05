@@ -16,13 +16,21 @@ const Card = ({
 }) => (
     <motion.div
         variants={fadeIn("", "spring", index * 0.5, 0.75)}
-        className='bg-[#090325] p-10 rounded-3xl w-[320px] border-2 border-[#4ab4f1]'
+        // 关键 1：添加 flex flex-col 并且必须要有 h-full
+        className='bg-[#090325] p-10 rounded-3xl w-[320px] border-2 flex flex-col h-full min-h-[420px]'
     >
-        <p className='text-white font-black text-[48px]'>"</p>
+        {/* 引号部分固定高度 */}
+        <p className='text-white font-black text-[48px] leading-none mb-4'>"</p>
 
-        <div className='mt-1'>
-            <div className='text-white tracking-wider text-[18px]  w-full'>{testimonial}</div>
+        {/* 关键 2：中间的包裹层加上 flex-grow 和 flex flex-col，充当弹簧 */}
+        <div className='flex-grow flex flex-col'>
+            
+            {/* 关键 3：文字部分加上 flex-grow，把它自己撑开 */}
+            <div className='text-white tracking-wider text-[18px] w-full flex-grow'>
+                {testimonial}
+            </div>
 
+            {/* 底部信息：因为上面的撑开，这里会死死贴在底部 */}
             <div className='mt-7 flex justify-between items-center gap-1'>
                 <div className='flex-1 flex flex-col'>
                     <p className='text-white font-medium text-[16px]'>
@@ -32,13 +40,13 @@ const Card = ({
                         {designation} of {company}
                     </p>
                 </div>
-                <div className='w-[50px] h-[50px]'>
-                <Image
-                    src={imageUrl}
-                    alt='project_image'
-                    // fill
-                    className='rounded-[50%] w-[50px] h-[50px]'
-                />
+                <div className='w-[50px] h-[50px] flex-shrink-0'>
+                    <Image
+                        src={imageUrl}
+                        alt='project_image'
+                        // 加上 object-cover 保证头像是正圆形
+                        className='rounded-[50%] w-[50px] h-[50px] object-cover'
+                    />
                 </div>
             </div>
         </div>
@@ -46,7 +54,8 @@ const Card = ({
 );
 const FeedbackCard = (arr) => {
     return (
-        <div className={` pb-14 ${styles.paddingX} flex flex-wrap gap-7  `}>
+        // 加上 items-stretch 确保内部卡片高度一致
+        <div className={` pb-14 ${styles.paddingX} flex flex-wrap items-stretch gap-7  `}>
             {arr.map((testimonial, index) => (
                 <Card key={testimonial.name} index={index} {...testimonial} />
             ))}

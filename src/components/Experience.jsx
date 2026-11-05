@@ -17,6 +17,9 @@ const ExperienceCard = ({ experience }) => {
       contentStyle={{
         background: "#1d1836",
         color: "#fff",
+        height: "auto", // 强制高度自适应内容
+        padding: "1.5rem", // 确保有足够的内边距
+        overflow: "visible", // 如果背景是圆角且内容多，可以改成 visible
       }}
       contentArrowStyle={{ borderRight: "7px solid  #232631" }}
       date={experience.date}
@@ -26,7 +29,7 @@ const ExperienceCard = ({ experience }) => {
           <Image
             src={experience.icon}
             alt={experience.company_name}
-            className='w-[90%] h-[90%] object-contain'
+            className='w-[90%] h-[90%] object-contain rounded-full overflow-hidden'
           />
         </div>
       }

@@ -15,6 +15,7 @@ import {
   threejs,
 } from "../assets";
 import hbis from "../assets/company/hbis.png";
+import rcs from "../assets/company/rcs.png";
 import zgsy from "../assets/company/zgsy.png";
 import huaqi from "../assets/company/huaqi.png";
 import weiliangdian from "../assets/company/weiliangdian.png";
@@ -252,18 +253,14 @@ const experiencesEn = [
   },
   {
     title: "React.js Developer",
-    company_name: "Hegang Group Co., Ltd",
-    icon: hbis,
-    iconBg: "#0075c4",
-    date: "Jul 2022 - Present",
+    company_name: "Hebei Ruichengsi Technology Co., Ltd",
+    icon: rcs,
+    iconBg: "#fff",
+    date: "Jul 2022 - Jul 2026",
     points: [
-      "Responsible for the company's information construction and operation and maintenance to ensure the stable and efficient operation of systems.",
-      "Led front-end development, using Vue and React to enhance user interaction experience.",
-      "Proficient in applying UI frameworks such as vant-ui and Element UI to optimize mobile and desktop interfaces.",
-      "Completed the construction and maintenance of server interfaces with the help of Node.js and Express.",
-      "Used React Native and Taro to develop cross-platform compatible hybrid applications and expand usage scenarios.",
-      "Adopted VUE + ECharts + Three.js to develop data visualization systems and enhance data intuitiveness.",
-      "Participated in technical learning and practice to improve technical capabilities and problem-solving skills."
+      "Full-stack development of multiple systems and architecture integration: Independently/led the development of multiple business systems for China State Shipbuilding Corporation, including energy consumption monitoring, PV management and pollutant reporting. Worked across front-end, back-end and multiple clients (large screen, APP, mini program) to achieve interconnection of business data.",
+      "SSO single sign-on and system embedding: Responsible for integrating the unified identity authentication (SSO) of Hudong and CSSC Group, solving technical challenges such as cross-domain and authentication, smoothly embedding core business modules into the OS system and improving the unified office experience.",
+      "Domestic IT-creation adaptation and digital twin: Led the adaptation and replacement of domestic middleware (TongTech / Dongfangtong) to ensure IT-creation compliance participated in data-visualization development for the digital-twin large screen, improving group-level data monitoring and decision-making efficiency.",
     ],
   },
 ];
@@ -335,33 +332,29 @@ const experiencesZh = [
   },
   {
     title: "全栈开发",
-    company_name: "河钢集团有限公司",
-    icon: hbis,
-    iconBg: "#0075c4",
-    date: "7月 2022 - 至今",
+    company_name: "河北瑞程思科技有限公司",
+    icon: rcs,
+    iconBg: "#fff",
+    date: "11月 2022 - 11月 2026",
     points: [
-      "负责公司信息化建设及运维,保障系统稳定高效运行。",
-      "主导前端开发,运用 Vue、React 提升用户交互体验。",
-      "熟练应用 vant-ui、element-ui 等 UI 框架,优化移动端及桌面端界面。",
-      "借助 Node.js、Express 完成服务器接口搭建与维护。",
-      "利用 react-native、Taro 开发多平台兼容混合应用,拓展使用场景。",
-      "采用 VUE+echarts+three.js 开发数据可视化系统,增强数据直观性。",
-      "参与技术学习实践,提升技术水平及问题解决能力。",
+      "多系统全栈开发与架构整合：独立/主导完成中国船舶集团能耗监测、光伏管理、污染物填报等多业务系统的开发。跨越前端、后端及多端（大屏、APP、小程序）开发，实现业务数据互联互通。",
+      "SSO单点登录与系统嵌入：负责对接沪东及中船集团统一身份认证（SSO），解决跨域、鉴权等技术难点，将核心业务模块平滑嵌入OS系统，提升用户统一办公体验。",
+      "信创国产化与数字孪生：主导完成国产中间件（东方通）的适配替换工作，保障信创合规；参与数字孪生大屏的数据可视化开发，提升集团数据监控与决策效率。"
     ],
   },
 ];
 const testimonialsEn = [
   {
     testimonial:
-      "When faced with cross-module development requirements, he can not only express his technical ideas clearly but also listen patiently to colleagues' suggestions. The collaboration is particularly seamless, doubling the team's development efficiency!",
-    name: "Supv",
+      "He articulates technical ideas clearly while patiently listening to colleagues' suggestions. Our seamless collaboration doubled the team's efficiency!",
+    name: "Zhang Jie",
     designation: "CFO",
     company: "CSSC",
     imageUrl: boss1,
   },
   {
     testimonial:
-      "I've never met a web developer who truly cares about their clients' success like Liu Yan does.",
+      "He is a rare Web developer who truly cares about client success, always putting himself in the client's shoes.",
     name: "Wang Qiang",
     designation: "RM",
     company: "CNPC‌",
@@ -369,7 +362,7 @@ const testimonialsEn = [
   },
   {
     testimonial:
-      "After Liu Yan optimized our website, our traffic increased by 50%. We can't thank them enough!",
+      "After he optimized our website, traffic increased by a remarkable 50%. We are incredibly grateful for the amazing results!",
     name: "Yue Jichuan",
     designation: "CEO",
     company: "TMBST",
@@ -379,15 +372,15 @@ const testimonialsEn = [
 const testimonialsZh = [
   {
     testimonial:
-      "面对跨模块开发需求，他既能清晰表达自己的技术思路，也能耐心倾听同事的建议，配合起来特别默契，让团队开发效率翻倍！",
-    name: "张东杰",
+      "既能清晰表达技术思路，又能耐心倾听同事建议。配合默契，让团队效率翻倍！",
+    name: "张杰",
     designation: "主管",
     company: "中国船舶",
     imageUrl: boss1,
   },
   {
     testimonial:
-      "我从未见过像刘岩这样真正关心客户成功的web开发人员",
+      "他是少有的、真正关心客户成功的 Web 开发人员，总是设身处地为客户着想。",
     name: "王强",
     designation: "区域经理",
     company: "中国石油",
@@ -395,7 +388,7 @@ const testimonialsZh = [
   },
   {
     testimonial:
-      "在刘岩优化我们的网站后,我们的流量增加了50%。我们感激不尽",
+      "网站经他优化后，流量显著提升了 50%，效果令人惊叹，我们感激不尽！",
     name: "岳冀川",
     designation: "CEO",
     company: "微亮点科技",

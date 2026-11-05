@@ -4,11 +4,8 @@ import { getMessages } from 'next-intl/server';
 import { cookies } from 'next/headers';
 import "./globals.css";
 
-
-export function generateStaticParams() {
-  return [{ locale: 'en' }, { locale: 'zh' }];
-}
-
+// 注意：generateStaticParams 应该放在 app/[locale]/layout.js 里面，根 layout 里不要写
+// 如果你使用的是 next-intl 的推荐目录结构，这里留空即可。
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
@@ -22,16 +19,22 @@ export const metadata = {
 
 export default async function RootLayout({ children }) {
   const cookieStore = await cookies();
-  const locale = cookieStore.get('NEXT_LOCALE').value;
-  const messages = await getMessages()
+  // 修复：防止没有 cookie 时报错，如果没有则默认使用 'en'
+  const locale = cookieStore.get('NEXT_LOCALE')?.value || 'en'; 
+  
+  const messages = await getMessages();
+
   return (
+    // 为 html 标签添加 lang
     <html lang={locale}>
-      {/* <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <NextIntlClientProvider messages={messages}>
-          {children}
-        </NextIntlClientProvider>
-      </body> */}
-      <body>
+      {/* 
+        重点：在这里加上 suppressHydrationWarning={true} 
+        这可以解决你截图中那个 data-eusoft-scrollable-element 浏览器插件注入导致的水合报错
+      */}
+      <body 
+        className={`${geistMono.variable} antialiased`} 
+        suppressHydrationWarning={true}
+      >
         <NextIntlClientProvider messages={messages}>
           {children}
         </NextIntlClientProvider>
