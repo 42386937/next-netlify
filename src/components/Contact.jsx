@@ -8,7 +8,7 @@ import { styles } from "../app/styles";
 // import { EarthCanvas } from "./canvas";
 import { SectionWrapper } from "../hoc";
 import { slideIn } from "../app/utils/motion";
-import CanvasLoader from "../app/_components/Loader";
+import CanvasLoader, { SceneReady } from "../app/_components/Loader";
 import { useTranslations, useLocale } from 'next-intl';
 import { toast } from "sonner"
 
@@ -20,31 +20,38 @@ const Earth = () => {
     );
 };
 const EarthCanvas = () => {
+    // 地球模型加载完成后由 <SceneReady /> 置为 true，用来收起 DOM 层加载器
+    const [ready, setReady] = useState(false);
     return (
-        <Canvas
-            shadows
-            frameloop='demand'
-            dpr={[1, 2]}
-            gl={{ preserveDrawingBuffer: true }}
-            camera={{
-                fov: 45,
-                near: 0.1,
-                far: 200,
-                position: [-4, 3, 6],
-            }}
-        >
-            <Suspense fallback={<CanvasLoader />}>
-                <OrbitControls
-                    autoRotate
-                    enableZoom={false}
-                    maxPolarAngle={Math.PI / 2}
-                    minPolarAngle={Math.PI / 2}
-                />
-                <Earth />
+        <div className='relative w-full h-full'>
+            <Canvas
+                shadows
+                frameloop='demand'
+                dpr={[1, 2]}
+                gl={{ preserveDrawingBuffer: true }}
+                camera={{
+                    fov: 45,
+                    near: 0.1,
+                    far: 200,
+                    position: [-4, 3, 6],
+                }}
+            >
+                {/* fallback 必须是 three 能渲染的东西，DOM 加载器放到 Canvas 外面 */}
+                <Suspense fallback={null}>
+                    <OrbitControls
+                        autoRotate
+                        enableZoom={false}
+                        maxPolarAngle={Math.PI / 2}
+                        minPolarAngle={Math.PI / 2}
+                    />
+                    <Earth />
 
-                <Preload all />
-            </Suspense>
-        </Canvas>
+                    <Preload all />
+                    <SceneReady onReady={setReady} />
+                </Suspense>
+            </Canvas>
+            {!ready && <CanvasLoader />}
+        </div>
     )
 }
 const btnEn = (loading) => {
@@ -158,8 +165,8 @@ function Contact() {
                         <span className='text-white font-medium mb-4'>{locale == 'zh' ? '您的邮箱' : 'Your email'}</span>
                         <input
                             type='email'
-                            name='senderEmail'
-                            value={form.senderEmail}
+                            name='email'
+                            value={form.email}
                             onChange={handleInputChange}
                             placeholder={t('address')}
                             className='bg-[#151030] py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'

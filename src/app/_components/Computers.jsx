@@ -2,7 +2,7 @@
 import { Suspense, useEffect, useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Preload, useGLTF } from "@react-three/drei";
-import CanvasLoader from "./Loader";
+import CanvasLoader, { SceneReady } from "./Loader";
 const Computers = ({ isMobile }) => {
     const computer = useGLTF("/desktop_pc/scene.gltf");
     return (
@@ -28,6 +28,8 @@ const Computers = ({ isMobile }) => {
 }
 export default function ComputersCanvas() {
     const [isMobile, setIsMobile] = useState(false);
+    // 模型加载完成后由 <SceneReady /> 置为 true，用来收起 DOM 层加载器
+    const [ready, setReady] = useState(false);
     useEffect(() => {
         // Add a listener for changes to the screen size
         const mediaQuery = window.matchMedia("(max-width: 500px)");
@@ -49,7 +51,7 @@ export default function ComputersCanvas() {
         };
     }, []);
     return (
-        // <div className="w-full h-screen absolute z-10">
+        <div className='relative w-full h-full'>
             <Canvas
                 frameloop='demand'
                 shadows
@@ -57,16 +59,19 @@ export default function ComputersCanvas() {
                 camera={{ position: [20, 3, 5], fov: 25 }}
                 gl={{ preserveDrawingBuffer: true }}
             >
-                <Suspense fallback={<CanvasLoader />}>
+                {/* fallback 必须是 three 能渲染的东西，DOM 加载器放到 Canvas 外面 */}
+                <Suspense fallback={null}>
                     <OrbitControls
                         enableZoom={false}
                         maxPolarAngle={Math.PI / 2}
                         minPolarAngle={Math.PI / 2}
                     />
                     <Computers isMobile={isMobile} />
+                    <SceneReady onReady={setReady} />
                 </Suspense>
                 <Preload all />
             </Canvas>
-        // </div>
+            {!ready && <CanvasLoader />}
+        </div>
     )
 }
